@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,7 +15,6 @@ namespace ASPNETExample.Controllers
     public class CatalogItemsController : Controller
     {
         private ASPNETExampleContext db = new ASPNETExampleContext();
-
         // GET: CatalogItems
         public async Task<ActionResult> Index()
         {
@@ -29,11 +28,13 @@ namespace ASPNETExample.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             CatalogItem catalogItem = await db.CatalogItems.FindAsync(id);
             if (catalogItem == null)
             {
                 return HttpNotFound();
             }
+
             return View(catalogItem);
         }
 
@@ -67,11 +68,13 @@ namespace ASPNETExample.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             CatalogItem catalogItem = await db.CatalogItems.FindAsync(id);
             if (catalogItem == null)
             {
                 return HttpNotFound();
             }
+
             return View(catalogItem);
         }
 
@@ -88,6 +91,7 @@ namespace ASPNETExample.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
             return View(catalogItem);
         }
 
@@ -98,11 +102,13 @@ namespace ASPNETExample.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             CatalogItem catalogItem = await db.CatalogItems.FindAsync(id);
             if (catalogItem == null)
             {
                 return HttpNotFound();
             }
+
             return View(catalogItem);
         }
 
@@ -123,6 +129,7 @@ namespace ASPNETExample.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }
